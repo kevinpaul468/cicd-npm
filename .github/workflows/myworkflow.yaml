@@ -31,7 +31,6 @@ jobs:
       - name: upload the prod ready build files
         uses: actions/upload-artifact@v4
         with:
-          name: proed
           path: ./dist
 
       - name: deploy to gh pages
