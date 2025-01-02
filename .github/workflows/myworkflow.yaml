@@ -30,17 +30,20 @@ jobs:
         with:
           name: proed
           path: ./dist
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
 
-    steps:
-      - name: download the artifact
-        uses: actions/download-artifact@v3
-        with:
-          name : final-build
-          path: ./dist
-
-      - name: deploy to gh pages
-        uses: actions/deploy-pages@v4
-
+       - name: deploy to gh pages
+         uses: actions/deploy-pages@v4
+  # deploy:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #
+  #   steps:
+  #     - name: download the artifact
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name : final-build
+  #         path: ./dist
+  #
+  #     - name: deploy to gh pages
+  #       uses: actions/deploy-pages@v4
+  #
