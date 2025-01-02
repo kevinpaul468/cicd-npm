@@ -1,0 +1,24 @@
+name: testing github actions
+
+on:
+  push :
+    branches:
+      - master
+
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: installing node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "22"
+
+      - name: install dependencies
+        run: npm install
+
+      - name: deploy
+        run: npm run deploy
