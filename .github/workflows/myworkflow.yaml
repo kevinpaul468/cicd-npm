@@ -22,5 +22,25 @@ jobs:
       - name: install dependencies
         run: npm install
 
-      - name: deploy
-        run: npm run deploy
+      - name: make the build 
+        run: npm run build 
+
+      - name: upload the prod ready build files
+        uses: actions/upload-artifact@v3
+        with:
+          name: proed
+          path: ./dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: download the artifact
+        uses: actions/download-artifact@v3
+        with:
+          name : final-build
+          path: ./dist
+
+      - name: deploy to gh pages
+        uses: actions/deploy-pages@v4
+
